@@ -1,0 +1,31 @@
+<head>
+  <title>Buzzme - Quiz master's ultimate buzzer on web and mobile</title>
+</head>
+
+<body>
+  <h1>Welcome to Buzz Me!</h1>
+  {{> siteHome}}
+  {{> playerHome}}
+</body>
+
+<template name="siteHome">
+  <h2>Quiz1 is in progress</h2>
+  <h2>{{players.count}} are live</h2>
+  <h3>Register particpent</h3>
+  <input placeholder="Team Name here"/>
+  <a href="Quiz1/P1">Let me in!</a>
+  <a href="Quiz1/admin"> Admin </a>
+</template>
+
+
+<template name="playerHome">
+  <h2>Hi Player {{name}}</h2>
+  {{currentBuzz.title}} ending in {{currentBuzz.timeout}}
+
+</template>
+
+
+<template name="adminHome">
+  <h2>Hi Admin</h2>
+  <!--TODO-->
+</template>
