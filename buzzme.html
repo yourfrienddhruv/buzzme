@@ -5,27 +5,46 @@
 <body>
   <h1>Welcome to Buzz Me!</h1>
   {{> siteHome}}
-  {{> playerHome}}
+  <!-- {{> playerRegister}} -->
+  <!-- {{> playerHome}} -->
 </body>
 
 <template name="siteHome">
-  <h2>Quiz1 is in progress</h2>
-  <h2>{{players.count}} are live</h2>
-  <h3>Register particpent</h3>
-  <input placeholder="Team Name here"/>
-  <a href="Quiz1/P1">Let me in!</a>
-  <a href="Quiz1/admin"> Admin </a>
+  <!-- <h2>{{players.count}} are live</h2> -->
+  <!-- <a href="Quiz1/admin"> Admin </a> -->
 </template>
 
+<template name="playerRegister">
+ <h2>{{quizName}} is in progress</h2>
+  <h3>Register particpent</h3>
+  <form class="new-player">
+    <input placeholder="Team Name here" name="playerName"  value="{{playerName}}"/>
+  <!-- <a href="{{quizName+ '/' + playerName}}">Let me in!</a> -->
+    <button>Let Me In !!</button>
+  </form>
+</template>
 
 <template name="playerHome">
-  <h2>Hi Player {{name}}</h2>
-  {{currentBuzz.title}} ending in {{currentBuzz.timeout}}
+  <h2>Hi {{playerName}}</h2>
+  
+  <h2>{{quizName}} is in progress</h2>
 
+  {{#if currentBuzz currentBuzz.isLive}}
+    {{currentBuzz.title}} ending in {{currentBuzz.timeout}}
+  {{else}}
+    <h2>Please Wait ... </h2>
+  {{/if}}
+  
 </template>
 
 
 <template name="adminHome">
   <h2>Hi Admin</h2>
-  <!--TODO-->
+  <h2>{{quizName}} is in progress</h2>
+
+  {{#each players}}
+  <div>
+    {{playerName}}
+  </div>
+  {{/each}}
 </template>
